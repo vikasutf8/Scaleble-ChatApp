@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Socket.io 
+- io connect 
+- socket.on with "event:message"  -> message revcived from the client
+- socket.emit with "event:message" -> now these messages are sent to the client
+
 First, run the development server:
 
 ```bash
