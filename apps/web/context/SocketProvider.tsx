@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useCallback, useEffect }  from "react";
-import {io } from "socket.io-client";
+import { log } from "console";
+import React, { useCallback, useContext, useEffect }  from "react";
+import {io,Socket } from "socket.io-client";
 
 interface SocketContextProps{
     children ?: React.ReactNode
@@ -11,6 +12,16 @@ interface ISocketContext{
     sendMessage : (message : string) => any;
 }
 const SocketContext =React.createContext<ISocketContext | null>(null);
+
+// custom hook for using SocketContext
+export const useSocket =()=>{
+    const state  =useContext(SocketContext);
+    console.log("useSocket", state);
+    if(!state){
+        console.log("useSocket is not available"); 
+    }
+    return state;
+}
 
 export const SocketProvider : React.FC<SocketContextProps> = ({children}) => {
     //now implement ISocketContext internal functions
@@ -36,4 +47,3 @@ export const SocketProvider : React.FC<SocketContextProps> = ({children}) => {
     )
 }
 
-export const useSocket = () => {}
