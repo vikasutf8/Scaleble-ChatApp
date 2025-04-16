@@ -15,8 +15,8 @@ async function startServer() {
     
     socketService.initListener();
 
-    server.listen(8001);
-    console.log('Server is running on port 8001');
+    server.listen(8008);
+    console.log('Server is running on port 8008');
 }
 
 startServer();

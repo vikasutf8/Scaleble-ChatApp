@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useCallback }  from "react";
-
+import React, { useCallback, useEffect }  from "react";
+import {io } from "socket.io-client";
 
 interface SocketContextProps{
     children ?: React.ReactNode
@@ -18,6 +18,16 @@ export const SocketProvider : React.FC<SocketContextProps> = ({children}) => {
          console.log("sendMessage ISocketContext", message);
     },[])
 //TODO : implement input field and send buttom on sendMessage ->that send the message to the server --using socket.io-client
+
+    useEffect(()=>{
+        const _socket = io("http://localhost:8009"); //connect to the server
+
+        return () => {
+            _socket.disconnect();
+        }
+    })
+
+
     return (
 
         <SocketContext.Provider value={null}>
@@ -26,4 +36,4 @@ export const SocketProvider : React.FC<SocketContextProps> = ({children}) => {
     )
 }
 
-export const useSocket = () => {
+export const useSocket = () => {}

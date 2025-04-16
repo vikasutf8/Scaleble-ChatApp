@@ -5,7 +5,13 @@ class SocketService {
   private _io: Server;
   constructor() {
     console.log("Socket service is running");
-    this._io = new Server(8001);
+    this._io = new Server({
+        cors: {
+            allowedHeaders: ["*"],
+            origin: "*",
+            methods: ["GET", "POST"],
+        },
+    });
   }
   get io() {
     return this._io;
