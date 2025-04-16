@@ -6,7 +6,7 @@ import { useSocket } from "../context/SocketProvider";
 export default function Page() {
 
   //TODO: emit message here to server
-  const sendMessage = useSocket();
+  const { sendMessage } = useSocket(); 
   const [message, setMessage] = useState("");
 
 
@@ -20,7 +20,9 @@ export default function Page() {
         <h3>Chat with me</h3>
         <div>
           <input type="text" placeholder="message" onChange={(e)=>setMessage(e.target.value)} />
-          <button type="submit" onClick={()=>sendMessage(message)}>Send</button>
+          <button type="submit" 
+          onClick={()=>sendMessage(message)}
+          >Send</button>
         </div>
        </div>
 
