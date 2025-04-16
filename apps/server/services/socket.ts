@@ -6,11 +6,11 @@ class SocketService {
   constructor() {
     console.log("Socket service is running");
     this._io = new Server({
-        cors: {
-            allowedHeaders: ["*"],
-            origin: "*",
-            methods: ["GET", "POST"],
-        },
+      cors: {
+        allowedHeaders: ["*"],
+        origin: "*",
+        methods: ["GET", "POST"],
+      },
     });
   }
   get io() {
@@ -29,9 +29,8 @@ class SocketService {
   // }
 
   public initListener() {
-    console.log("initListener");
-    
     const io = this.io;
+    console.log("initListener");
     io.on("connect", async (socket) => {
       console.log("A user connected", socket.id);
 
@@ -44,7 +43,9 @@ class SocketService {
       await socket.on("disconnect", () => {
         console.log("A user disconnected");
       });
+
     });
+    this.io.listen(8009);
   }
 }
 export default SocketService;
